@@ -6,7 +6,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'buoto/gotests-vim'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-sensible'
@@ -66,6 +66,9 @@ set smartindent
 set foldmethod=syntax
 set foldlevelstart=99           "打开文件是默认不折叠代码
 " set spell
+
+set shortmess+=c
+set signcolumn=number
 
 noremap <silent> <Tab> :normal %<CR>
 set cc=80
@@ -289,7 +292,7 @@ augroup go
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
-  au filetype go inoremap <buffer> . .<C-x><C-o>
+  " au filetype go inoremap <buffer> . .<C-x><C-o>
 augroup END
 
 " build_go_files is a custom function that builds or compiles the test file.
@@ -502,3 +505,45 @@ let g:ranger_replace_netrw = 1
 " whichkey
 nnoremap <silent> <leader> :WhichKey ','<CR>
 
+" coc
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-@> coc#refresh()
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" file header
+
+func GoHeader()
+" if expand("%:e") == 'go'
+  normal gg
+  normal 9O
+  call setline(1, "//")
+  call setline(2, "// Copyright (c) ".strftime("%Y")." 通通停车武汉研发中心")
+  call setline(3, "// All rights reserved")
+  call setline(4, "// filename: ".expand('%:t'))
+  call setline(5, "// description: ")
+  call setline(6, "// version: 0.1.0")
+  call setline(7, "// created by zhuwenkai(zhuwenkai@egova.com.cn) at ".strftime("%Y-%m-%d"))
+  call setline(8, "//")
+  call setline(9, "")
+  normal zR
+  normal 4k
+  normal 0
+  normal 16l
+" endif
+endfunc
+command! -nargs=0 Header call GoHeader()
