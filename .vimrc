@@ -19,6 +19,7 @@ Plug 'voldikss/vim-translator'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'dbakker/vim-projectroot'
+Plug 'rhysd/accelerated-jk'
 
 call plug#end()
 
@@ -29,7 +30,7 @@ set nocompatible                " Enables us Vim specific features
 filetype off                    " Reset filetype detection first ...
 filetype plugin indent on       " ... and enable filetype detection
 set ttyfast                     " Indicate fast terminal conn for faster redraw
-set ttyscroll=5                 " Speedup scrolling
+set ttyscroll=3                 " Speedup scrolling
 set laststatus=2                " Show status line always
 set encoding=utf-8              " Set default encoding to UTF-8
 set autoread                    " Automatically read changed files
@@ -38,7 +39,7 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set noerrorbells                " No beeps
-set number                      " Show line numbers
+" set number                      " Show line numbers
 set rnu
 set showcmd                     " Show me what I'm typing
 set noswapfile                  " Don't use swapfile
@@ -58,8 +59,8 @@ set nocursorcolumn              " Do not highlight column (speeds up highlightin
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
 set history=500 	        	" Sets how many lines of history VIM has to remember
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 set foldmethod=syntax
@@ -132,8 +133,15 @@ nnoremap <leader>a :cclose<CR>
 " Visual linewise up and down by default (and use gj gk to go quicker)
 " noremap <Up> gk
 " noremap <Down> gj
-noremap j gj
-noremap k gk
+" noremap j gj
+" noremap k gk
+
+" 加速jk的移动,1次之后每次移动两行
+" 超过一屏,用c-d/c-f来移动
+let g:accelerated_jk_acceleration_table = [1,1]
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
+
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
