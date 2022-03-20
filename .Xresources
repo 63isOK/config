@@ -1,0 +1,78 @@
+! 输出时不滚动
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! 按键按下时回到最底部
+URxvt*scrollTtyKeypress: true
+URxvt.scrollBar: false
+
+URxvt.font:xft:SourceCodePro-Regular:pixelsize=18:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=16:antialias=true
+URxvt.boldFont:xft:SourceCodePro-Regular:pixelsize=18:Bold:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=16:Bold:antialias=true
+
+! Input Method set
+URxvt.inputMethod:SCIM
+URxvt.imLocale:zh_CN.utf8
+URxvt.preeditType: Root
+
+! 复制
+URxvt.perl-ext-common:  ...,selection-to-clipboard,...
+URxvt.clipboard.autocopy: true
+! URxvt.keysym.M-c: perl:clipboard:copy
+! URxvt.keysym.M-v: perl:clipboard:paste
+
+
+! URxvt.url-select.launcher: /usr/bin/xdg-open
+! URxvt.url-select.underline: true
+
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+
+! urxvt color set
+URxvt.background: rgba:0000/0000/0000/cccc
+!设置颜色深度
+URxvt.depth: 32
+! URxvt.shading:80
+URxvt.multichar_encoding:utf-8
+! URxvt.background:black
+URxvt.foreground:green
+
+URxvt.colorBD:yellow
+URxvt.colorUL:green
+URxvt.cursorColor:red3
+URxvt.color0:black
+URxvt.color1:red3
+URxvt.color2:springgreen
+URxvt.color3:wheat3
+URxvt.color4:red
+URxvt.color5:magenta4
+URxvt.color6:red
+URxvt.color7:gray85
+URxvt.color8:gray10
+URxvt.color9:orangered2
+URxvt.color10:chartreuse3
+URxvt.color11:lightgoldenrod2
+URxvt.color12:red
+URxvt.color13:pink1
+URxvt.color14:red
+
+! bg transparent set
+URxvt.inheritPixmap: true
+URxvt.tintCddolor: white
+URxvt.shading: 80
+
+Rxvt.menu:/etc/X11/rxvt.menu
+Rxvt.transparency:255
+
+!! xrdb -load .Xresources
+Xft.dpi:96
+URxvt.imFont:fixed
+! Xim end
+
+! curosr
+URxvt.cursorBlink: true
+URxvt.pointerBlink: true
+URxvt.externalBorder: true
