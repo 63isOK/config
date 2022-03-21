@@ -8,8 +8,8 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 URxvt.scrollBar: false
 
-URxvt.font:xft:SourceCodePro-Regular:pixelsize=18:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=16:antialias=true
-URxvt.boldFont:xft:SourceCodePro-Regular:pixelsize=18:Bold:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=16:Bold:antialias=true
+URxvt.font:xft:SourceCodePro-Regular:pixelsize=14:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=14:antialias=true
+URxvt.boldFont:xft:SourceCodePro-Regular:pixelsize=14:Bold:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=14:Bold:antialias=true
 
 ! Input Method set
 URxvt.inputMethod:SCIM
@@ -17,10 +17,10 @@ URxvt.imLocale:zh_CN.utf8
 URxvt.preeditType: Root
 
 ! 复制
-URxvt.perl-ext-common:  ...,selection-to-clipboard,...
 URxvt.clipboard.autocopy: true
 ! URxvt.keysym.M-c: perl:clipboard:copy
-! URxvt.keysym.M-v: perl:clipboard:paste
+! URxvt.keysym.C-v: perl:clipboard:paste
+URxvt.perl-ext-common:  ...,default,clipboard,selection-to-clipboard,resize-font,tabbedex,...
 
 
 ! URxvt.url-select.launcher: /usr/bin/xdg-open
@@ -32,7 +32,7 @@ URxvt.tabbed.tab-fg: 3
 URxvt.tabbed.tab-bg: 0
 
 ! urxvt color set
-URxvt.background: rgba:0000/0000/0000/cccc
+URxvt.background: [80]rgba:0000/0000/0000/cccc
 !设置颜色深度
 URxvt.depth: 32
 ! URxvt.shading:80
@@ -64,9 +64,6 @@ URxvt.inheritPixmap: true
 URxvt.tintCddolor: white
 URxvt.shading: 80
 
-Rxvt.menu:/etc/X11/rxvt.menu
-Rxvt.transparency:255
-
 !! xrdb -load .Xresources
 Xft.dpi:96
 URxvt.imFont:fixed
@@ -76,3 +73,6 @@ URxvt.imFont:fixed
 URxvt.cursorBlink: true
 URxvt.pointerBlink: true
 URxvt.externalBorder: true
+
+! 减少一个像素的间距
+URxvt.letterSpace: -1

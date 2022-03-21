@@ -151,7 +151,8 @@ export GIT_TERMINAL_PROMPT=1
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-ssh-add ~/.ssh/gitlab
+eval `ssh-agent`
+ssh-add /home/go/.ssh/gitlab
 
 export DELVE_EDITOR=vim
 
