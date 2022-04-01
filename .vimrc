@@ -20,6 +20,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'dbakker/vim-projectroot'
 Plug 'rhysd/accelerated-jk'
+Plug 'APZelos/blamer.nvim' " 行尾显示git提交信息
 
 call plug#end()
 
@@ -165,6 +166,7 @@ autocmd BufEnter * silent! lcd %:p:h
 " let g:go_fmt_command = "goimports"
 let g:go_fmt_command="gopls"
 let g:go_gopls_gofumpt=1
+let g:go_imports_autosave = 1
 let g:go_metalinter_command = "golangci-lint"
 let g:go_metalinter_enabled = [
     \ "deadcode",
@@ -524,6 +526,13 @@ inoremap <silent><expr> <c-@> coc#refresh()
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" GoTo code navigation.
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" 重命名
+nmap rn <Plug>(coc-rename)
 
 " file header
 
@@ -547,3 +556,11 @@ func GoHeader()
 " endif
 endfunc
 command! -nargs=0 Header call GoHeader()
+
+
+" blamer
+let g:blamer_enabled = 0
+let g:blamer_delay = 300
+" let g:blamer_date_format = '%Y-%m-%d %H:%M'
+let g:blamer_relative_time = 1
+let g:blamer_prefix = ' >>>> '

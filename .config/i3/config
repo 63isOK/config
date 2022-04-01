@@ -116,6 +116,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# 应用自动分配到指定工作区
+# assign [class="vnote"] $ws1
+# assign [class="chromium"] $ws2
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -208,9 +212,9 @@ gaps outer 6
 bindsym $mod+q move container to output left
 
 #登录时 启用窗口透明
-exec --no-startup-id picom -b --inactive-dim 0.5
+exec --no-startup-id picom -b --inactive-dim 0.2
 #登陆时 随机选择壁纸 ，~/Pictures/Background 下要放几张图片
-exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Background 
+exec_always --no-startup-id ~/.config/i3/feh.sh
 # 登陆时启动polybar
 exec --no-startup-id  ~/.config/polybar/launch.sh
 # 开启urxvtd
