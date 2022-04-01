@@ -214,7 +214,7 @@ bindsym $mod+q move container to output left
 #登录时 启用窗口透明
 exec --no-startup-id picom -b --inactive-dim 0.2
 #登陆时 随机选择壁纸 ，~/Pictures/Background 下要放几张图片
-exec_always --no-startup-id ~/.config/i3/feh.sh
+exec --no-startup-id ~/.config/i3/feh.sh
 # 登陆时启动polybar
 exec --no-startup-id  ~/.config/polybar/launch.sh
 # 开启urxvtd
