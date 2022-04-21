@@ -191,6 +191,5 @@ alias present='present -base ~/go/pkg/mod/golang.org/x/tools@v0.1.0/cmd/present'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# nvim
-# alias n=nvim
-# alias f=floaterm
+# git-file-history
+alias gith="git-file-history"
